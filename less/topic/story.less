@@ -1,0 +1,154 @@
+// ============================================================================
+// The story header: core's DiscussionHero, as a white band under the masthead.
+// ============================================================================
+
+.DiscussionHero.MastheadStory {
+  // flarum/tags colours the hero with the primary tag; the story band is
+  // always white, and the tag's colour moves to its kicker chip.
+  --hero-bg: var(--mh-card);
+  background: var(--mh-card) !important;
+  color: var(--mh-ink);
+  text-align: left;
+  border-bottom: 1px solid var(--mh-line);
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+
+  .container {
+    padding-top: 32px;
+    padding-bottom: 28px;
+  }
+
+  .DiscussionHero-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+
+    > li {
+      margin: 0;
+    }
+  }
+
+  .DiscussionHero-title {
+    margin: 0;
+    max-width: 960px;
+    font-family: var(--mh-heading);
+    font-weight: 700;
+    font-size: 52px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--mh-ink);
+    overflow-wrap: anywhere;
+  }
+}
+
+// A forum running a site-wide breadcrumb (ernestdefoe's Waymark) already has
+// one under the header; the story's own steps aside rather than repeat it.
+.Page-main:has(.Waymark) .MastheadCrumbs {
+  display: none;
+}
+
+.MastheadCrumbs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--mh-muted);
+
+  a {
+    color: var(--mh-muted);
+
+    &:hover {
+      color: var(--mh-accent);
+    }
+  }
+}
+
+.MastheadKickers {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  .MastheadKicker {
+    border-radius: 5px;
+    padding: 3px 9px;
+    text-decoration: none !important;
+  }
+
+  .MastheadKicker--solid {
+    background: var(--mh-kicker, var(--mh-accent));
+    color: #fff;
+  }
+
+  .MastheadKicker--outline {
+    border: 1px solid var(--mh-line);
+    color: var(--mh-ink);
+    padding: 2px 9px;
+    font-weight: 600;
+  }
+}
+
+.MastheadByline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
+  font-size: 14px;
+  color: var(--mh-muted);
+}
+
+.MastheadByline-avatar.Avatar {
+  --size: 40px;
+}
+
+.MastheadByline-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.MastheadByline-who {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+
+  a {
+    color: var(--mh-ink);
+  }
+}
+
+.MastheadByline-phoneOnly,
+.MastheadByline-phoneBest {
+  display: none;
+}
+
+.MastheadByline-best {
+  margin-left: auto;
+  font-weight: 600;
+  color: #1f7a4d;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    color: #1f7a4d;
+    text-decoration: underline;
+  }
+}
+
+.MastheadGroupBadge {
+  .mh-tag-colours();
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 5px;
+  padding: 1px 6px;
+  background: var(--mh-tint);
+  color: var(--mh-tink);
+  white-space: nowrap;
+}

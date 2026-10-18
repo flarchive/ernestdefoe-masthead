@@ -1,0 +1,56 @@
+.MastheadPortal > .container {
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.MastheadSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.MastheadSection-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.MastheadSection-more {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--mh-ink);
+
+  &:hover {
+    color: var(--mh-accent);
+  }
+}
+
+.MastheadColumns {
+  display: flex;
+  gap: var(--mh-gap);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.MastheadSidebar {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+// The white card every panel and widget is.
+.MastheadPanel,
+.MastheadWidget {
+  background: var(--mh-card);
+  border: 1px solid var(--mh-line);
+  border-radius: var(--mh-radius);
+  overflow: hidden;
+}

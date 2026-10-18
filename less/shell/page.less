@@ -1,0 +1,75 @@
+// ============================================================================
+// The page: the grey ground the white cards sit on.
+//
+// 🚨 The ground is set on the page, NOT through core's --body-bg. Core paints
+// modals, dropdowns, the composer and every sticky toolbar with --body-bg;
+// greying it would grey all of those too. Leaving it white makes each of them
+// a white card on the grey ground, which is exactly the look.
+// ============================================================================
+
+body,
+.App {
+  background: var(--mh-ground);
+}
+
+// The condensed face is for headlines: Masthead's own section headings and
+// the page heroes. Discussion titles in lists stay in the text face, as in
+// the mockup — a column of condensed capitals reads as shouting.
+.MastheadHeading,
+.Hero-title,
+.DiscussionHero-title,
+.UserCard-name {
+  font-family: var(--mh-heading);
+}
+
+.MastheadHeading {
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--mh-ink);
+}
+
+.MastheadKicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mh-accent);
+
+  &--solid {
+    align-self: flex-start;
+    background: var(--mh-accent);
+    color: var(--mh-on-dark);
+    border-radius: 5px;
+    padding: 3px 8px;
+  }
+}
+
+.MastheadEmpty {
+  margin: 0;
+  padding: 18px 20px;
+  color: var(--mh-muted);
+}
+
+// The index (/all, a tag page): the list becomes one card, like the portal's.
+@media @tablet-up {
+  .IndexPage .DiscussionList {
+    background: var(--mh-card);
+    border: 1px solid var(--mh-line);
+    border-radius: var(--mh-radius);
+    overflow: hidden;
+  }
+
+  .IndexPage .DiscussionListItem {
+    border-bottom: 1px solid var(--mh-line-soft);
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .IndexPage .DiscussionList-loadMore {
+    padding: 12px;
+  }
+}

@@ -1,0 +1,107 @@
+// ============================================================================
+// Tokens
+//
+// The three colours come from the server as LESS variables (extend.php), the
+// preset with each override laid over it. Everything else derives from them
+// in CSS, with color-mix(), so a custom colour gets the right tints without
+// LESS colour maths that a var(--primary-color) accent could not take.
+//
+// Colour that depends on the light/dark mode lives in core's own
+// [data-theme^=light|dark] blocks, never behind prefers-color-scheme: Flarum 2
+// has four modes with a real user preference behind them. Masthead's own
+// tokens are --mh-*; the only core variables it sets are ones core defines.
+// ============================================================================
+
+// 🚨 @masthead-accent, -bar, -strip, -ground and -ground-dark are defined by core
+// from extend.php's registerLessConfigVar, and deliberately NOT given defaults
+// here: LESS resolves a variable to its LAST definition in scope wherever it
+// is used, so a default in this file would silently beat the server's value.
+
+:root {
+  --mh-accent:      @masthead-accent;
+  --mh-bar:         @masthead-bar;
+  --mh-strip:       @masthead-strip;
+  --mh-on-dark:     #ffffff;
+  --mh-on-dark-2:   #c3ccd9;
+  --mh-on-dark-3:   #aab6c7;
+  --mh-bar-raised:  color-mix(in srgb, var(--mh-bar) 84%, #ffffff);
+  --mh-bar-line:    color-mix(in srgb, var(--mh-bar) 70%, #6f8bb3);
+  --mh-tone:        color-mix(in srgb, var(--mh-bar) 80%, #5a7fb0);
+
+  --mh-radius:      16px;
+  --mh-radius-md:   14px;
+  --mh-radius-sm:   8px;
+  --mh-gap:         24px;
+  --mh-strip-h:     36px;
+  --mh-bar-h:       84px;
+  --mh-rule:        4px;
+  --mh-head:        calc(var(--mh-strip-h) + var(--mh-bar-h) + var(--mh-rule));
+
+  --mh-heading:     system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --container-hd:   1240px;
+  --container-xl:   1240px;
+  --container-xxl:  1240px;
+
+}
+
+// Core's header colours, for every mode: the masthead is dark in light mode
+// and in dark mode alike, so its controls are always light-on-dark.
+//
+// 🚨 `html[data-theme]`, not :root. Core declares these inside its own
+// [data-theme^=light] block, which is more specific than :root, so a :root
+// value lost in light mode and the masthead came out white.
+html[data-theme] {
+  --header-bg:            var(--mh-bar);
+  --header-color:         var(--mh-on-dark);
+  --header-control-bg:    var(--mh-bar-raised);
+  --header-control-color: var(--mh-on-dark);
+}
+
+// Square corners (the Broadsheet preset), stamped on <html> by the server.
+[data-masthead-corners='square'] {
+  --mh-radius:    4px;
+  --mh-radius-md: 4px;
+  --mh-radius-sm: 3px;
+}
+
+[data-theme^='light'] {
+  --mh-ground:     @masthead-ground;
+  --mh-card:       #ffffff;
+  --mh-line:       #e3e6ea;
+  --mh-line-soft:  #eef0f3;
+  --mh-ink:        #14161a;
+  --mh-muted:      #5b6472;
+  --mh-tint-mix:   14%;
+  --mh-ink-mix:    72%;
+}
+
+[data-theme='light-hc'] {
+  --mh-line:       #9aa3ae;
+  --mh-muted:      #39404a;
+  --mh-ink-mix:    55%;
+}
+
+// Dark: derived from core's own dark body colour, so a forum that changed it
+// in Appearance keeps its own shade rather than Masthead's.
+[data-theme^='dark'] {
+  --mh-ground:     @masthead-ground-dark;
+  --mh-card:       var(--body-bg);
+  --mh-line:       color-mix(in srgb, var(--body-bg) 80%, #ffffff);
+  --mh-line-soft:  color-mix(in srgb, var(--body-bg) 90%, #ffffff);
+  --mh-ink:        var(--text-color);
+  --mh-muted:      var(--muted-color);
+  --mh-tint-mix:   24%;
+  --mh-ink-mix:    45%;
+}
+
+[data-theme='dark-hc'] {
+  --mh-line:       color-mix(in srgb, var(--body-bg) 55%, #ffffff);
+}
+
+// A tag's tint and ink, from its own colour (or the accent when it has none).
+.mh-tag-colours() {
+  --mh-t:    var(--mh-tag, var(--mh-accent));
+  --mh-tint: color-mix(in srgb, var(--mh-t) var(--mh-tint-mix), var(--mh-card));
+  --mh-tink: color-mix(in srgb, var(--mh-t) var(--mh-ink-mix), var(--mh-ink));
+}
