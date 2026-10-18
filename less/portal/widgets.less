@@ -1,0 +1,137 @@
+// ============================================================================
+// Sidebar widgets: top posters and the pick'em games. The same markup is used
+// in the portal's sidebar, a Bespoke zone and a fof/forum-widgets-core
+// section, so these styles assume nothing about the host around them.
+// ============================================================================
+
+.MastheadWidget {
+  padding: 14px 18px;
+}
+
+.MastheadWidget-title {
+  margin: 0 0 10px;
+  font-family: var(--mh-heading);
+  font-weight: 700;
+  font-size: 20px;
+  text-transform: uppercase;
+  color: var(--mh-ink);
+}
+
+// The banded variant: a navy title bar, as on the games card.
+.MastheadWidget--banded {
+  padding: 0;
+
+  .MastheadWidget-title {
+    margin: 0;
+    padding: 14px 18px;
+    background: var(--mh-bar);
+    color: #fff;
+    border-radius: calc(var(--mh-radius) - 1px) calc(var(--mh-radius) - 1px) 0 0;
+  }
+}
+
+.MastheadWidget-link {
+  display: block;
+  padding: 12px 18px;
+  font-weight: 600;
+  color: var(--mh-accent);
+}
+
+.MastheadPosters-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.MastheadPoster {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  color: var(--mh-ink);
+  text-decoration: none !important;
+
+  &:hover .MastheadPoster-name {
+    color: var(--mh-accent);
+  }
+}
+
+.MastheadPoster-rank {
+  width: 22px;
+  font-weight: 700;
+  color: var(--mh-muted);
+}
+
+.MastheadPoster-avatar.Avatar {
+  --size: 32px;
+  flex: 0 0 auto;
+}
+
+.MastheadPoster-name {
+  font-weight: 600;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.MastheadPoster-count {
+  margin-left: auto;
+  color: var(--mh-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+// -- Games --------------------------------------------------------------------
+
+.MastheadGames-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.MastheadGame {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 10px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--mh-line-soft);
+  font-weight: 600;
+
+  img {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    vertical-align: -4px;
+    margin-right: 6px;
+  }
+}
+
+.MastheadGame-team {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.MastheadGame-when {
+  grid-row: span 2;
+  align-self: center;
+  color: var(--mh-muted);
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.MastheadGame-live {
+  color: var(--mh-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+// Inside a host that draws its own card, Masthead's does not draw a second.
+.MastheadFofWidget .MastheadPosters,
+.MastheadBespokeWidget.MastheadWidget {
+  border: 0;
+  padding: 0;
+  background: transparent;
+}

@@ -1,0 +1,246 @@
+// ============================================================================
+// The masthead: utility strip, the bar, and the accent rule under it.
+//
+// Desktop: the header scrolls away with the page, as an IPS or UI.X masthead
+// does, rather than core's fixed 52px bar — 124px held on screen would cost
+// every page a sixth of its height. Phone: core's own fixed top bar, recoloured.
+// ============================================================================
+
+@media @tablet-up {
+  :root {
+    // Core sticks the discussion sidebar, the list pane and the side nav at
+    // `top: var(--header-height)`. With nothing fixed above them, they stick
+    // to the top of the window, with a little air.
+    --header-height: 12px;
+  }
+
+  .App {
+    padding-top: var(--mh-head);
+  }
+
+  .App-header,
+  .affix .App-header,
+  .App-header.navbar-fixed-top {
+    position: absolute;
+    height: auto;
+    padding: 0;
+    display: block;
+    background: var(--mh-bar);
+    border-bottom: var(--mh-rule) solid var(--mh-accent);
+    box-shadow: none !important;
+    color: var(--mh-on-dark);
+
+    > .container {
+      min-height: var(--mh-bar-h);
+      gap: 28px;
+    }
+  }
+
+  .Header-navigation {
+    display: none;
+  }
+
+  .Header-title {
+    line-height: 1;
+  }
+
+  // Nav links.
+  .Header-primary .Header-controls {
+    gap: 4px;
+
+    > li > .Button {
+      height: 40px;
+      padding: 0 14px;
+      border-radius: var(--mh-radius-sm);
+      font-weight: 600;
+      color: var(--mh-on-dark-2);
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+
+      &:hover,
+      &:focus-visible,
+      &.active {
+        background: var(--mh-bar-raised);
+        color: var(--mh-on-dark);
+      }
+
+      .Button-icon {
+        display: none;
+      }
+    }
+  }
+
+  // Search and "Start a discussion".
+  .Header-secondary .Header-controls {
+    gap: 10px;
+  }
+
+  // Core's search is a button that opens the search modal. On the masthead
+  // it is drawn as the search field the mockup has, prompt and all; it is
+  // still the same button underneath.
+  .Header-secondary .Search-input.Button {
+    width: 220px;
+    height: 40px;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 0 14px;
+    border-radius: var(--mh-radius-sm);
+    border: 1px solid var(--mh-bar-line);
+    background: var(--mh-bar-raised);
+    color: var(--mh-on-dark-3);
+    font-weight: 400;
+
+    .Button-label {
+      display: inline;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: var(--mh-on-dark);
+      border-color: var(--mh-on-dark-3);
+    }
+  }
+}
+
+.App-header {
+  background: var(--mh-bar) !important;
+  background-image: none !important;
+}
+
+.MastheadCompose.Button {
+  height: 40px;
+  padding: 0 16px;
+  border-radius: var(--mh-radius-sm);
+  background: var(--mh-accent);
+  color: #fff;
+  font-weight: 600;
+
+  &:hover,
+  &:focus-visible {
+    background: color-mix(in srgb, var(--mh-accent) 88%, #000);
+    color: #fff;
+  }
+}
+
+// -- The utility strip --------------------------------------------------------
+
+.MastheadStrip {
+  background: var(--mh-strip);
+  color: var(--mh-on-dark-2);
+  font-size: 13px;
+}
+
+.MastheadStrip-inner {
+  height: var(--mh-strip-h);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.MastheadStrip-online {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.MastheadStrip-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #3dd68c;
+}
+
+.MastheadStrip-controls {
+  margin-left: auto;
+
+  .Header-controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .Button {
+    height: 30px;
+    padding: 0 8px;
+    font-size: 13px;
+    color: #e6ebf2;
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+
+    &:hover,
+    &:focus-visible {
+      color: #fff;
+      background: var(--mh-bar-raised);
+    }
+  }
+
+  .item-signUp .Button {
+    font-weight: 600;
+  }
+
+  .Avatar {
+    --size: 22px;
+  }
+}
+
+// -- The title block ----------------------------------------------------------
+
+.MastheadBrand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--mh-on-dark);
+  text-decoration: none !important;
+
+  &:hover {
+    color: var(--mh-on-dark);
+  }
+}
+
+.MastheadBrand-tile {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 46px;
+  border-radius: 10px;
+  background: var(--mh-accent);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mh-heading);
+  font-weight: 800;
+  font-size: 24px;
+}
+
+.MastheadBrand-logo .Header-logo {
+  max-height: 52px;
+}
+
+.MastheadBrand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  line-height: 1;
+}
+
+.MastheadBrand-name {
+  font-family: var(--mh-heading);
+  font-weight: 800;
+  font-size: 30px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.MastheadBrand-tagline {
+  font-size: 12px;
+  color: var(--mh-on-dark-3);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
