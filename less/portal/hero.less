@@ -1,0 +1,185 @@
+// ============================================================================
+// The hero: one featured story and three beside it.
+// ============================================================================
+
+.MastheadHero {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &--loading {
+    min-height: 420px;
+    border-radius: var(--mh-radius);
+    background: linear-gradient(100deg, var(--mh-line-soft) 30%, var(--mh-card) 50%, var(--mh-line-soft) 70%) 0 0 / 300% 100%;
+    animation: mh-shimmer 1.4s linear infinite;
+  }
+}
+
+@keyframes mh-shimmer {
+  to { background-position: -150% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .MastheadHero--loading { animation: none; }
+}
+
+// The picture, or the placeholder stripes drawn from the story's tag colour.
+.MastheadHero-media {
+  --mh-stripe: var(--mh-tone);
+  background: repeating-linear-gradient(135deg, var(--mh-stripe) 0 22px, color-mix(in srgb, var(--mh-stripe) 88%, #000) 22px 44px);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.MastheadHero-feature {
+  flex: 2 1 560px;
+  min-width: 0;
+  position: relative;
+  min-height: 420px;
+  border-radius: var(--mh-radius);
+  overflow: hidden;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-decoration: none !important;
+
+  .MastheadHero-media {
+    position: absolute;
+    inset: 0;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: #fff;
+
+    .MastheadHero-title {
+      text-decoration: underline;
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+.MastheadHero-body {
+  position: relative;
+  padding: 32px;
+  background: color-mix(in srgb, var(--mh-strip) 84%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.MastheadHero-title {
+  margin: 0;
+  font-family: var(--mh-heading);
+  font-weight: 700;
+  font-size: 44px;
+  line-height: 1.02;
+  text-transform: uppercase;
+  color: #fff;
+  overflow-wrap: anywhere;
+}
+
+.MastheadHero-excerpt {
+  margin: 0;
+  color: #d3dae5;
+  max-width: 640px;
+}
+
+.MastheadHero-meta {
+  font-size: 13px;
+  color: var(--mh-on-dark-3);
+}
+
+// Split: the picture on the left, the story on a solid panel to its right.
+.MastheadHero--split .MastheadHero-feature {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  background: var(--mh-bar);
+
+  .MastheadHero-media {
+    position: relative;
+    inset: auto;
+    min-height: 100%;
+  }
+
+  // Top-aligned: the kicker and headline start level with the top of the
+  // picture, rather than sinking to the bottom of a tall panel and leaving a
+  // band of empty colour above them.
+  .MastheadHero-body {
+    background: var(--mh-bar);
+    justify-content: flex-start;
+  }
+
+  .MastheadHero-title {
+    font-size: 38px;
+  }
+}
+
+// -- The three beside it ------------------------------------------------------
+
+.MastheadHero-side {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.MastheadStory {
+  flex: 1;
+  display: flex;
+  gap: 14px;
+  background: var(--mh-card);
+  border-radius: var(--mh-radius-md);
+  padding: 14px;
+  border: 1px solid var(--mh-line);
+  color: var(--mh-ink);
+  text-decoration: none !important;
+
+  .MastheadHero-media {
+    width: 96px;
+    flex: 0 0 96px;
+    min-height: 84px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--mh-ink);
+    border-color: color-mix(in srgb, var(--mh-accent) 45%, var(--mh-line));
+
+    .MastheadStory-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.MastheadStory-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.MastheadStory-title {
+  font-weight: 700;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.MastheadStory-meta {
+  font-size: 13px;
+  color: var(--mh-muted);
+}
