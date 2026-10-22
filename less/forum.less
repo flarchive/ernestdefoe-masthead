@@ -1,0 +1,26 @@
+// ============================================================================
+// Masthead — a portal theme for Flarum 2, after IPS 5 and XenForo UI.X.
+//
+// Import order is load-bearing: phone.less is LAST, because an unconditional
+// rule of equal specificity beats a media-query rule that came before it.
+// ============================================================================
+
+@import 'lib/tokens.less';
+@import 'lib/fonts.less';
+
+@import 'shell/page.less';
+@import 'shell/header.less';
+@import 'shell/footer.less';
+
+@import 'portal/layout.less';
+@import 'portal/hero.less';
+@import 'portal/tiles.less';
+@import 'portal/latest.less';
+@import 'portal/widgets.less';
+
+@import 'topic/story.less';
+@import 'topic/stream.less';
+@import 'topic/sidebar.less';
+@import 'topic/phone.less';
+
+@import 'phone.less';

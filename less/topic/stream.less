@@ -1,0 +1,242 @@
+// ============================================================================
+// The stream: post #1 as the article, replies as white cards.
+//
+// All of it keys off classes the posts' own views carry (MastheadArticle,
+// MastheadPost--best), so a post that arrives live is styled like the rest.
+// ============================================================================
+
+@media @tablet-up {
+  .DiscussionPage .Page-container {
+    display: flex;
+    // Core lays this page out row-reverse (its sidebar comes first in the
+    // DOM); Masthead orders the two explicitly instead.
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+    align-items: flex-start;
+    padding-top: 28px;
+  }
+
+  .DiscussionPage .Page-content {
+    order: 1;
+    flex: 999 1 640px;
+    min-width: 0;
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .DiscussionPage .Page-sidebar {
+    order: 2;
+    flex: 1 1 300px;
+    float: none;
+    width: auto;
+    margin: 0;
+  }
+
+  // Core gives both columns a 30px top margin of their own; the container's
+  // padding already spaces them from the story band, and they start level.
+  .DiscussionPage .Page-container > .Page-content,
+  .DiscussionPage .Page-container > .Page-sidebar {
+    margin-top: 0;
+  }
+
+  .DiscussionPage-nav {
+    position: static;
+    padding: 0;
+    margin: 0;
+
+    > ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    // Spacing belongs to the cards, not to the list: other extensions put
+    // empty items here, and a gap or margin per item would stack up air
+    // above the first card.
+    .MastheadWidget {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.DiscussionPage-nav > ul > li {
+  margin: 0;
+}
+
+// Under 1100px the sidebar's cards sit below the replies, full width.
+@media (min-width: 768px) and (max-width: 1099.98px) {
+  .DiscussionPage .Page-sidebar {
+    flex-basis: 100%;
+  }
+}
+
+.PostStream-item {
+  margin-bottom: 14px;
+}
+
+// -- Replies -----------------------------------------------------------------
+
+.PostStream .CommentPost:not(.MastheadArticle) {
+  background: var(--mh-card);
+  border: 1px solid var(--mh-line);
+  border-radius: var(--mh-radius-md);
+  padding: 18px 20px;
+}
+
+.MastheadPost--best.CommentPost:not(.MastheadArticle) {
+  border-top: 4px solid #1f7a4d;
+}
+
+// The banner shows the article's first picture; its copy in the body hides.
+.MastheadLead-source {
+  display: none !important;
+}
+
+.PostStream-afterFirstPost {
+  margin-top: 14px;
+}
+
+.MastheadPostNumber {
+  color: var(--mh-muted);
+  font-size: 13px;
+}
+
+.MastheadReplies-heading {
+  margin: 14px 0 0;
+}
+
+// Event posts (renamed, tagged, stickied…): one thin centred line.
+.PostStream .EventPost {
+  text-align: center;
+  font-size: 13px;
+  color: var(--mh-muted);
+  padding: 2px 0;
+  border: 0;
+  background: none;
+
+  .EventPost-icon {
+    position: static;
+    margin-right: 6px;
+    float: none;
+  }
+}
+
+// -- The article -------------------------------------------------------------
+
+.MastheadArticle.CommentPost {
+  background: var(--mh-card);
+  border: 1px solid var(--mh-line);
+  border-radius: var(--mh-radius);
+  // No overflow: hidden: it clipped the post's ⋯ menu. The lead picture
+  // rounds its own top corners.
+  padding: 0;
+
+  // The byline above already says who and when.
+  .Post-side,
+  .Post-header {
+    display: none;
+  }
+
+  .Post-container,
+  .Post-main {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .Post-body,
+  .Post-footer,
+  .Post-actions {
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .Post-body {
+    padding-top: 32px;
+    padding-bottom: 8px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--mh-ink);
+
+    h1, h2, h3, h4 {
+      font-family: var(--mh-heading);
+      font-weight: 700;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
+    // A real quotation, not a card: the accent rule and an italic voice.
+    blockquote {
+      margin: 0 0 1em;
+      padding: 4px 0 4px 20px;
+      border: 0;
+      border-left: 4px solid var(--mh-accent);
+      background: none;
+      border-radius: 0;
+      font-size: 20px;
+      font-style: italic;
+      color: var(--mh-ink);
+    }
+
+    img {
+      border-radius: var(--mh-radius-sm);
+    }
+  }
+
+  .Post-actions {
+    position: static;
+    opacity: 1;
+    padding-bottom: 24px;
+  }
+}
+
+.MastheadLead {
+  aspect-ratio: 16 / 7;
+  background: var(--mh-tone);
+  overflow: hidden;
+  border-radius: calc(var(--mh-radius) - 1px) calc(var(--mh-radius) - 1px) 0 0;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// -- "Write a reply": the join card -------------------------------------------
+
+.PostStream .ReplyPlaceholder {
+  background: var(--mh-card);
+  border: 1px solid var(--mh-line);
+  border-radius: var(--mh-radius-md);
+  padding: 16px 18px;
+}
+
+.MastheadEnd {
+  margin-top: 20px;
+}
+
+// -- Badges ------------------------------------------------------------------
+//
+// Masthead draws the author's badges as one labelled row beside the name
+// (badges.tsx). The copies core and fof/badges draw elsewhere would repeat
+// it: core's floats into the avatar column, fof/badges' earned icons sit
+// unlabelled in the footer, and its primary badge trails the name.
+.PostStream .CommentPost {
+  .PostUser-badges,
+  .PrimaryBadge,
+  .Post-footer li:has(> .PostBadges) {
+    display: none;
+  }
+}
