@@ -1,0 +1,106 @@
+@media @phone {
+  .DiscussionHero.MastheadStory {
+    .container {
+      padding: 16px 16px 14px;
+    }
+
+    .DiscussionHero-items {
+      gap: 10px;
+    }
+
+    .DiscussionHero-title {
+      font-size: 30px;
+      line-height: 1.02;
+    }
+  }
+
+  .MastheadCrumbs {
+    display: none;
+  }
+
+  .MastheadByline {
+    font-size: 13px;
+    gap: 10px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+  }
+
+  .MastheadByline-text {
+    min-width: 0;
+  }
+
+  .MastheadByline-best {
+    display: none;
+  }
+
+  // On a phone "Best answer ›" sits on the info line instead (see below).
+  .MastheadByline-phoneBest {
+    display: inline;
+  }
+
+  .MastheadByline-avatar.Avatar {
+    --size: 32px;
+  }
+
+  // The info card collapses to this one line under the byline.
+  .MastheadByline-phoneOnly {
+    display: inline;
+  }
+
+  .DiscussionPage .Page-content {
+    padding: 0 14px;
+  }
+
+  .MastheadLead {
+    border-radius: 0;
+  }
+
+  .MastheadArticle.CommentPost {
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+    margin: 0 -14px;
+
+    .Post-body,
+    .Post-footer,
+    .Post-actions {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+
+    .Post-body {
+      padding-top: 16px;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+  }
+
+  .PostStream .CommentPost:not(.MastheadArticle) {
+    padding: 12px 14px;
+    border-radius: 12px;
+
+    // A reply's header is one line on a phone: earned badges keep their
+    // icon, and their name moves to the tooltip and screen readers.
+    .MastheadBadge:not(.MastheadBadge--more) {
+      gap: 0;
+      padding: 3px 5px;
+    }
+
+    .MastheadBadge-name {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+  }
+
+  .MastheadArticle .MastheadByline--article {
+    padding: 16px 16px 0;
+  }
+
+  .MastheadReplies-heading {
+    font-size: 22px;
+  }
+}

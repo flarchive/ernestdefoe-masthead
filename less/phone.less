@@ -1,0 +1,274 @@
+// ============================================================================
+// Phones (under 768px): core's fixed top bar in the masthead's colours, the
+// hero stacked, a chip row instead of the grid, and a floating compose button.
+// ============================================================================
+
+@media @phone {
+  :root {
+    --header-height-phone: 60px;
+  }
+
+  // Core paints the phone's content area white so the drawer slides over a
+  // solid page; Masthead's page is the grey ground.
+  .App-content {
+    background: var(--mh-ground);
+  }
+
+  .App-navigation {
+    background: var(--mh-bar);
+    box-shadow: inset 0 -3px 0 var(--mh-accent);
+    color: #fff;
+
+    .Button,
+    .Button:hover {
+      color: #fff;
+      background: transparent;
+      border-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  // The bar on every page: drawer button, brand, search on the right. The
+  // row spans the bar but lets clicks through, so a page's own controls
+  // (core positions them in the same bar) stay reachable.
+  .App-navigation .App-backControl {
+    right: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    height: var(--header-height-phone);
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+
+    .MastheadBrand {
+      padding: 0;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .MastheadBrand-tile {
+      width: 34px;
+      height: 34px;
+      flex-basis: 34px;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    .MastheadBrand-logo .Header-logo {
+      max-height: 34px;
+    }
+
+    .MastheadBrand-text {
+      min-width: 0;
+    }
+
+    .MastheadBrand-name {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // A logo already says whose forum this is; beside it, the name would
+    // crowd search off the bar.
+    .MastheadBrand-logo + .MastheadBrand-text,
+    .MastheadBrand-tagline {
+      display: none;
+    }
+  }
+
+  .MastheadNav-brand {
+    min-width: 0;
+    display: flex;
+  }
+
+  // A page with its own title in the bar (a discussion's scrubber) keeps it;
+  // a page with its own action on the right (start a discussion, the
+  // discussion menu) keeps that instead of search.
+  body:has(.App-titleControl) .MastheadNav-brand {
+    display: none;
+  }
+
+  body:has(.App-primaryControl) .MastheadNav-search {
+    display: none;
+  }
+
+  .MastheadNav-search {
+    margin-left: auto;
+
+    .Search-input.Button {
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      justify-content: center;
+    }
+
+    .Button-label {
+      display: none;
+    }
+  }
+
+  .App-titleControl,
+  .App-titleControl .Button {
+    font-family: var(--mh-heading);
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  // Core draws a phone modal's title and close button in the header colour
+  // (with !important), over the modal's own white top. Inside a modal the
+  // header colour is the page's ink instead of the masthead's white.
+  .Modal {
+    --header-color: var(--mh-ink);
+    --header-control-color: var(--mh-ink);
+  }
+
+  // The drawer is the phone's menu: the brand at the top, then the controls.
+  .App-drawer {
+    background: var(--mh-bar);
+    color: #fff;
+  }
+
+  .App-header .Header-controls .Button {
+    color: #fff;
+  }
+
+  .MastheadBrand {
+    justify-content: center;
+    padding: 6px 0;
+  }
+
+  .MastheadBrand-name {
+    font-size: 22px;
+  }
+
+  .MastheadPortal > .container {
+    padding: 14px 14px 96px;
+    gap: 18px;
+  }
+
+  .MastheadHero {
+    gap: 12px;
+  }
+
+  .MastheadHero-feature {
+    flex-basis: 100%;
+    min-height: 250px;
+    border-radius: var(--mh-radius-md);
+  }
+
+  .MastheadHero--split .MastheadHero-feature {
+    display: flex;
+
+    .MastheadHero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .MastheadHero-body {
+      background: color-mix(in srgb, var(--mh-strip) 84%, transparent);
+    }
+  }
+
+  .MastheadHero-body {
+    padding: 16px;
+    gap: 6px;
+  }
+
+  .MastheadHero-title,
+  .MastheadHero--split .MastheadHero-title {
+    font-size: 26px;
+    line-height: 1.05;
+  }
+
+  // The mockup's phone hero is the feature alone; the excerpt and the side
+  // stories would push the latest list below the fold.
+  .MastheadHero-excerpt,
+  .MastheadHero-side {
+    display: none;
+  }
+
+  .MastheadPanel,
+  .MastheadWidget {
+    border-radius: var(--mh-radius-md);
+  }
+
+  .MastheadPanel-head {
+    padding: 12px 14px;
+    flex-wrap: wrap;
+
+    .MastheadHeading {
+      font-size: 20px;
+    }
+  }
+
+  .MastheadRow {
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .MastheadRow-avatar.Avatar {
+    --size: 36px;
+  }
+
+  .MastheadRow-title {
+    white-space: normal;
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  .MastheadRow-meta {
+    font-size: 12px;
+
+    .MastheadTagChip {
+      display: none;
+    }
+  }
+
+  .MastheadSidebar {
+    flex-basis: 100%;
+  }
+
+  // One column on a phone, everything centred.
+  .MastheadFooter-inner {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .MastheadFooter-links,
+  .MastheadFooter-powered {
+    grid-column: 1;
+    justify-self: center;
+  }
+}
+
+.MastheadFab {
+  position: fixed;
+  right: 16px;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  z-index: calc(var(--zindex-header) - 1);
+  height: 52px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 26px;
+  background: var(--mh-accent);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--mh-bar) 35%, transparent);
+  cursor: pointer;
+
+  // A bottom tab bar (fof/mobile-tab and its forks) sits where the button
+  // would; lift it clear rather than hide one under the other.
+  body:has(.MobileTab-bar) & {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+}

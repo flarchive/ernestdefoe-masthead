@@ -1,0 +1,133 @@
+// ============================================================================
+// The page: the grey ground the white cards sit on.
+//
+// 🚨 The ground is set on the page, NOT through core's --body-bg. Core paints
+// modals, dropdowns, the composer and every sticky toolbar with --body-bg;
+// greying it would grey all of those too. Leaving it white makes each of them
+// a white card on the grey ground, which is exactly the look.
+// ============================================================================
+
+body,
+.App {
+  background: var(--mh-ground);
+}
+
+// The footer sits at the bottom of the window on a short page, instead of
+// floating halfway up it: the app is a column at least a screen tall, and
+// the content takes up the slack. In the flow, never position: fixed, so on
+// a long page the footer is simply at the end. Core already gives .App
+// min-height: 100vh (with box-sizing: border-box, so its header padding is
+// inside it); dvh keeps a phone's collapsing toolbar from pushing it off.
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+// Core keeps a strip of empty page under everything (--app-bottom-padding)
+// so a minimised composer never covers the last line. Under Masthead the
+// footer is the last thing, so that strip moves inside it: same room for the
+// composer, but painted the footer's colour instead of a band of page
+// ground under the footer.
+.App:has(> .App-footer .MastheadFooter) {
+  padding-bottom: 0;
+}
+
+.MastheadFooter {
+  padding-bottom: var(--app-bottom-padding);
+}
+
+.App-content {
+  flex: 1 0 auto;
+}
+
+// The condensed face is for headlines: Masthead's own section headings and
+// the page heroes. Discussion titles in lists stay in the text face, as in
+// the mockup — a column of condensed capitals reads as shouting.
+.MastheadHeading,
+.Hero-title,
+.DiscussionHero-title,
+.UserCard-name {
+  font-family: var(--mh-heading);
+}
+
+.MastheadHeading {
+  margin: 0;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--mh-ink);
+}
+
+.MastheadKicker {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mh-accent);
+
+  &--solid {
+    align-self: flex-start;
+    background: var(--mh-accent);
+    color: var(--mh-on-dark);
+    border-radius: 5px;
+    padding: 3px 8px;
+  }
+}
+
+.MastheadEmpty {
+  margin: 0;
+  padding: 18px 20px;
+  color: var(--mh-muted);
+}
+
+// Flarum's welcome hero (and other plain heroes) as a band of card colour,
+// like the discussion page's story header, rather than core's grey: on a
+// branded ground the grey band looked patched in.
+.Hero.WelcomeHero {
+  --hero-bg: var(--mh-card);
+  background: var(--mh-card);
+  border-bottom: 1px solid var(--mh-line);
+}
+
+// The index (/all, a tag page): the list becomes one card, like the portal's.
+@media @tablet-up {
+  // 🚨 No overflow: hidden to round the corners. It also clipped every
+  // row's ⋯ controls menu at the card's edge, so on a list of one or two
+  // discussions the menu was all but cut off (mailwright.email). The rows
+  // round their own outer corners instead, and menus escape the card.
+  .IndexPage .DiscussionList {
+    background: var(--mh-card);
+    border: 1px solid var(--mh-line);
+    border-radius: var(--mh-radius);
+  }
+
+  .IndexPage .DiscussionListItem {
+    border-bottom: 1px solid var(--mh-line-soft);
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .IndexPage .DiscussionList-discussions > li:first-child .DiscussionListItem {
+    border-top-left-radius: calc(var(--mh-radius) - 1px);
+    border-top-right-radius: calc(var(--mh-radius) - 1px);
+  }
+
+  // The last row closes the card, unless "Load more" has a button under it.
+  .IndexPage .DiscussionList:not(:has(.DiscussionList-loadMore > *)) .DiscussionList-discussions > li:last-child .DiscussionListItem {
+    border-bottom: 0;
+    border-bottom-left-radius: calc(var(--mh-radius) - 1px);
+    border-bottom-right-radius: calc(var(--mh-radius) - 1px);
+  }
+
+  .IndexPage .DiscussionList-loadMore:empty {
+    display: none;
+  }
+
+  .IndexPage .DiscussionList-loadMore {
+    padding: 12px;
+    border-radius: 0 0 calc(var(--mh-radius) - 1px) calc(var(--mh-radius) - 1px);
+  }
+}
