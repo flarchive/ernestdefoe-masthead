@@ -1,0 +1,52 @@
+.MastheadFooter {
+  margin-top: 40px;
+  background: var(--mh-strip);
+  color: var(--mh-on-dark-3);
+  font-size: 13px;
+}
+
+.MastheadFooter-inner {
+  padding-top: 28px;
+  padding-bottom: 28px;
+  // Name | links | Powered by. The outer columns share the leftover width
+  // equally, so the links sit in the middle of the footer as a group, not
+  // pushed up against the name.
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
+
+.MastheadFooter-name {
+  font-family: var(--mh-heading);
+  font-weight: 800;
+  font-size: 20px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.MastheadFooter-links {
+  grid-column: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px 20px;
+  flex-wrap: wrap;
+
+  a {
+    color: #d3dae5;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.MastheadFooter-powered {
+  grid-column: 3;
+  justify-self: end;
+  color: var(--mh-on-dark-3);
+
+  &:hover {
+    color: #fff;
+  }
+}
