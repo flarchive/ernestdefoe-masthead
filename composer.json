@@ -1,0 +1,91 @@
+{
+    "name": "ernestdefoe/masthead",
+    "description": "Masthead — a portal theme for Flarum 2 in the style of IPS 5 and XenForo UI.X. A navy masthead, a featured-story hero, a tag grid, latest discussions and sidebar widgets, with named presets and a dark mode.",
+    "type": "flarum-extension",
+    "keywords": [
+        "flarum",
+        "flarum-extension",
+        "theme",
+        "portal",
+        "magazine",
+        "masthead"
+    ],
+    "homepage": "https://github.com/ernestdefoe/masthead",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ernestdefoe",
+            "email": "ernestdefoe@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "flarum/core": "^2.0"
+    },
+    "suggest": {
+        "flarum/tags": "The Browse the forum grid, the tag chips and a tag as the hero source.",
+        "flarum/sticky": "Sticky discussions as the hero source.",
+        "fof/upload": "Images attached with fof/upload are used as hero pictures.",
+        "ernestdefoe/page-builder": "Page Builder articles as the hero source.",
+        "ernestdefoe/header-nav": "Masthead draws the main navigation from Header Nav when it is installed.",
+        "ernestdefoe/backdrop": "An author's profile cover is the hero picture of last resort.",
+        "ernestdefoe/picks": "An upcoming-games widget in the portal sidebar.",
+        "fof/forum-widgets-core": "Place Masthead's widgets anywhere fof/forum-widgets-core can."
+    },
+    "autoload": {
+        "psr-4": {
+            "ErnestDefoe\\Masthead\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ErnestDefoe\\Masthead\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "flarum-extension": {
+            "title": "Masthead",
+            "category": "theme",
+            "icon": {
+                "name": "fas fa-newspaper",
+                "backgroundColor": "#0e2340",
+                "color": "#ffffff"
+            }
+        }
+    },
+    "support": {
+        "issues": "https://github.com/ernestdefoe/masthead/issues",
+        "source": "https://github.com/ernestdefoe/masthead"
+    },
+    "require-dev": {
+        "flarum/phpstan": "^2.0",
+        "flarum/tags": "^2.0",
+        "flarum/sticky": "^2.0",
+        "flarum/testing": "^2.0",
+        "laravel/pint": "^1.32"
+    },
+    "scripts": {
+        "test": [
+            "@test:unit",
+            "@test:integration"
+        ],
+        "test:integration": "phpunit -c tests/phpunit.integration.xml",
+        "test:setup": "@php tests/integration/setup.php",
+        "analyse:phpstan": "phpstan analyse",
+        "style": "pint --test",
+        "style:fix": "pint",
+        "test:unit": "phpunit -c tests/phpunit.unit.xml"
+    },
+    "scripts-descriptions": {
+        "test": "Runs all tests.",
+        "test:integration": "Runs all integration tests.",
+        "test:setup": "Sets up a database for use with integration tests. Execute this only once.",
+        "analyse:phpstan": "Run static analysis",
+        "test:unit": "Runs all unit tests."
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
