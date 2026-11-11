@@ -1,0 +1,135 @@
+// ============================================================================
+// Latest discussions.
+// ============================================================================
+
+.MastheadLatest {
+  flex: 999 1 560px;
+  min-width: 0;
+}
+
+.MastheadPanel-head {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--mh-line);
+
+  .MastheadHeading {
+    font-size: 24px;
+  }
+}
+
+.MastheadTabs {
+  margin-left: auto;
+  display: flex;
+  gap: 6px;
+}
+
+.MastheadTab {
+  height: 34px;
+  padding: 0 12px;
+  border-radius: var(--mh-radius-sm);
+  border: 1px solid var(--mh-line);
+  background: var(--mh-card);
+  color: var(--mh-ink);
+  font: inherit;
+  cursor: pointer;
+
+  &.is-active {
+    background: var(--mh-bar);
+    border-color: var(--mh-bar);
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.MastheadRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.MastheadRow {
+  display: flex;
+  gap: 14px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--mh-line-soft);
+  align-items: center;
+  color: var(--mh-ink);
+  text-decoration: none !important;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--mh-ink);
+    background: color-mix(in srgb, var(--mh-ground) 60%, var(--mh-card));
+
+    .MastheadRow-title {
+      color: var(--mh-accent);
+    }
+  }
+}
+
+.MastheadRow-avatar.Avatar {
+  --size: 40px;
+  flex: 0 0 auto;
+}
+
+.MastheadRow-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.MastheadRow-title {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.MastheadRow-meta {
+  font-size: 13px;
+  color: var(--mh-muted);
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+
+  > span:last-child {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.MastheadRow-count {
+  flex: 0 0 auto;
+  min-width: 56px;
+  text-align: right;
+  font-weight: 700;
+
+  small {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--mh-muted);
+  }
+}
+
+.MastheadPanel-foot {
+  display: block;
+  padding: 12px 20px;
+  font-weight: 600;
+  color: var(--mh-accent);
+
+  &:hover {
+    color: var(--mh-accent);
+    text-decoration: underline;
+  }
+}
+
+.MastheadLatest .LoadingIndicator-container {
+  padding: 40px 0;
+}
