@@ -1,0 +1,45 @@
+// The opening post's fof/polls polls in the sidebar card (topic/index.tsx
+// PollCard): fof/polls' own component, fitted to the narrow column.
+.MastheadPolls {
+  .Post-poll {
+    margin: 0;
+  }
+
+  // fof/polls puts its voters / edit / remove buttons beside the question;
+  // in a narrow column they would squeeze it, so they take their own line.
+  .PollHeading {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .PollHeading-title-container {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+
+  .PollHeading-title {
+    margin: 0 0 2px;
+    font-size: 16px;
+    line-height: 1.3;
+    color: var(--mh-ink);
+  }
+
+  // fof/polls indents the answers 15px, which a 260px column can't spare.
+  .PollOptions {
+    margin: 12px 0 0;
+  }
+
+  .PollAnswer-text {
+    min-width: 0;
+  }
+
+  .PollAnswer-text-answer {
+    overflow-wrap: anywhere;
+  }
+
+  .Post-poll + .Post-poll {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--mh-line);
+  }
+}
