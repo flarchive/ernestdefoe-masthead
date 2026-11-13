@@ -1,0 +1,230 @@
+# Masthead
+
+**A portal theme for Flarum 2**, in the style of an IPS 5 or XenForo UI.X
+front page. A navy masthead with a utility strip, a featured story with three
+beside it, a grid of the forum's sections, the latest discussions and a
+sidebar of widgets, on a grey ground of white cards.
+
+![Masthead's portal: the masthead, a featured story and three beside it](screenshots/01-portal.png)
+
+---
+
+## What it does
+
+- **A masthead.** A utility strip with today's date, how many members are
+  online and the visitor's own controls; then the logo or a monogram tile,
+  the forum's name and a tagline, the main navigation, search and
+  **Start a discussion**, with an accent rule underneath.
+- **A portal home page.** The forum's front page becomes the portal; the
+  discussion list moves to `/all`. Prefer the list? One setting puts it back.
+- **Featured stories.** One feature and three side stories, with pictures
+  taken from each opening post (Markdown, BBCode or fof/upload images). Stories
+  come from the newest discussions, a tag, sticky discussions or Page Builder
+  articles.
+- **Browse the forum.** A tile for each top-level tag, with its icon,
+  description, discussion count and latest activity.
+- **Latest discussions** and **Top this week**, with coloured tag chips.
+- **Widgets.** *Top posters this week*, and *Upcoming games* when
+  [Picks](https://github.com/ernestdefoe/picks) is installed. Top posters can
+  also be placed anywhere through Bespoke or fof/forum-widgets-core.
+- **fof/forum-widgets-core on the portal.** Widgets placed in its areas show on
+  the portal too: its top and bottom areas above and below the latest
+  discussions, its side areas in the portal's sidebar, as cards in Masthead's
+  style.
+- **A footer** with your own links. Links to Facebook, X, Instagram, YouTube, Discord, TikTok, Bluesky and other social sites get their brand icon automatically. Any link can take a Font Awesome icon, and a link with no name shows just the icon.
+- **The header stays in view** on computers and tablets: as the page scrolls it shrinks to a compact bar that keeps the strip (notifications, your profile) along with the logo, links and search. On a discussion, the discussion's title takes the date's place once you scroll past it; click it to go back to the top. Links from the portal open a discussion where you left off, as Flarum's own discussion list does.
+- **Phones** get a compact bar, the feature card, a scrolling row of section
+  chips, the latest list and a floating **Start a discussion**.
+- **Dark mode**, following Flarum's own light, dark and high-contrast modes.
+
+![The whole portal, top to bottom](screenshots/portal-full.png)
+
+![Browse the forum: a tile for each section](screenshots/tag-grid.png)
+
+![Footer links with brand icons](screenshots/footer-icons.png)
+
+<img src="screenshots/widgets.png" alt="The Top posters this week widget" width="300">
+
+![Masthead on an iPhone and an Android phone](screenshots/04-phones.png)
+
+---
+
+## The discussion page
+
+Every discussion reads as an article with a discussion below it.
+
+- **A story header**: the section as a coloured kicker and the other tags
+  beside it, the title as a headline, and a byline with the author's group,
+  the date, the reading time and the reply count. When
+  [fof/best-answer](https://github.com/FriendsOfFlarum/best-answer) has
+  marked an answer, there is a link straight to it.
+- **The opening post as the article**: a wide lead picture taken from the
+  post's own first image (you can turn this off), a comfortable reading
+  column, proper pull quotes, and **Copy link** and **Share** under it.
+- **Replies as cards** under a "Discussion · N replies" heading, each with
+  the author's group and the post number. The best answer gets a green rule.
+  Renames, tag changes and the like are a thin line between them.
+- **A sidebar** with *About this discussion* (started, last reply, replies,
+  who is taking part, Follow and the discussion menu), *More in* the
+  discussion's section, and the same widgets as the portal.
+- **A post scrubber beside the posts**: a slim rail at the far right of the
+  replies on computers and tablets that stays in view as you read. Drag it,
+  jump to the original post or the newest, see where the unread replies start,
+  and, when [fof/best-answer](https://github.com/FriendsOfFlarum/best-answer)
+  has marked one, a green **Best answer** mark that takes you straight there.
+  Phones keep Flarum's own scrubber in the top bar. One setting turns it off.
+- **The poll beside the article**, if you like: with
+  [fof/polls](https://github.com/FriendsOfFlarum/polls), the opening post's
+  poll can sit in the sidebar under *About this discussion* instead of
+  interrupting the article. Voting, results and the poll's own buttons work
+  the same. Phones and narrow windows keep it in the post, and polls in
+  replies stay in their reply. Off by default.
+- **Live replies look the same.** A reply that arrives while you read gets
+  exactly the same treatment as the rest.
+- **On phones**, the header, then the article, the replies and *More in* at
+  the end, with a floating **Reply** button.
+
+It is Flarum's own discussion page underneath, so mentions, reactions,
+likes, best answers and anything else you have installed keep working.
+
+![A discussion in Masthead: the story header, the article and the sidebar](screenshots/02-topic.png)
+
+![The post scrubber rail at the right of a discussion's replies](screenshots/scrubber.png)
+
+<img src="screenshots/sidebar-poll.png" alt="A fof/polls poll in the discussion sidebar" width="300">
+
+<p>
+<img src="screenshots/phone-topic-ios.png" alt="A discussion on an iPhone" width="260">
+<img src="screenshots/phone-topic-android.png" alt="A discussion on Android" width="260">
+<img src="screenshots/phone-portal-ios.png" alt="The portal on an iPhone" width="260">
+<img src="screenshots/phone-portal-android.png" alt="The portal on Android" width="260">
+</p>
+
+---
+
+## Presets
+
+Pick a look in one click. A preset sets the accent, the masthead colour, the
+featured-story layout and the corners together:
+
+| Preset | Look |
+|---|---|
+| **Game Day** | Navy and red, full-width feature |
+| **Sunday** | Charcoal and orange, split feature |
+| **Evergreen** | Forest green, full-width feature |
+| **Royal** | Midnight and purple, full-width feature |
+| **Broadsheet** | Black and red, square corners, split feature |
+
+Then change only what you want. The accent can be red, orange, green, purple,
+Flarum's own primary colour or any colour you choose; the masthead can take any
+colour; the feature can be full width, split or off. Your changes stay when you
+switch presets.
+
+![Two presets side by side: Game Day and Broadsheet](screenshots/03-presets.png)
+
+![Masthead in dark mode](screenshots/portal-dark.png)
+
+---
+
+## Settings
+
+![Masthead's settings: presets, accent, masthead colour, featured stories and footer links](screenshots/admin.png)
+
+| Setting | What it does |
+|---|---|
+| **Home page** | The portal or the discussion list. The same setting as *Home page* in Basics. |
+| **Preset**, **Accent colour**, **Masthead colour** | The look, above. |
+| **Utility strip colour**, **Page background** (light and dark) | Exact colours for a brand palette. Empty means the default: the strip a shade darker than the masthead, the mockup grey, Flarum's dark background. A dark background you set also tints the dark-mode cards. |
+| **Tagline**, **Monogram**, **Show the forum name beside the logo** | The title block. The logo is Flarum's own (Appearance). The masthead is dark in both colour modes, so it shows your **dark-mode logo** whenever you have uploaded one, and your normal logo otherwise. The name shows beside a logo only if you turn it on; without a logo it always shows. The tagline shows whenever it is set. |
+| **Keep the header in view on computers** | The header, strip included, stays at the top of the window as the page scrolls, shrunk to a compact bar; on a discussion the title takes the date's place once you scroll past it. On by default. Off lets the whole header scroll away, as before. Phones keep their own top bar either way. |
+| **Use the theme's fonts** | Barlow Condensed and Figtree, served from your forum. Off uses system fonts. |
+| **Layout**, **Stories from**, **Tag** / **Content type** | The featured stories. Any tag can be the source: primary, child or secondary. Only that source is featured; when it has none yet, visitors see no featured block and admins see a hint. |
+| **Fill the gaps with the newest discussions** | Off by default. On, a source with fewer than four is topped up with the newest discussions from any tag. |
+| **Show the tag on each story** | The tag names in the featured stories. Off keeps their tag colours. |
+| **Sections in the grid** | How many tags *Browse the forum* shows. |
+| **Draw the Tags page as section tiles** | The Tags page in the same tiles as *Browse the forum*, with subtags and the latest discussion. On by default. |
+| **Pictures** | The featured stories' pictures and the banner at the top of a discussion: the post's own picture falling back to the author's Backdrop cover, the post's picture only, the Backdrop cover only, or none. |
+| **Show the post scrubber beside the posts** | The rail at the right of a discussion's posts on computers and tablets. On by default. Off leaves computers without one, as before. |
+| **Show view counts** | With FoF Discussion Views: each discussion's view count, with an eye, beside its reply count on the featured stories, Latest discussions, the byline, About this discussion and More in. Large numbers are shortened (12.3K); hover for the exact count. On by default. |
+| **Where the opening post's poll goes** | With fof/polls: *In the post* (the default) or *In the sidebar*, under About this discussion, on wide screens. Phones and narrow windows always keep it in the post. |
+| **Footer links**, **Show "Powered by Flarum"** | The footer, centred under the page and at the bottom of the window on short pages. Drag links to reorder. A `#` link is a placeholder that goes nowhere; `#name` scrolls to that part of the page. Social links (Facebook, X, Instagram, Threads, Bluesky, YouTube, TikTok, Discord, Reddit, GitHub, LinkedIn, Twitch, Pinterest, Telegram, WhatsApp, Snapchat, Spotify, Patreon, Steam, Mastodon) get their brand icon by themselves; **Icon** takes any Font Awesome class, such as `fas fa-envelope`. Leave **Name** empty to show only the icon. |
+
+---
+
+## Works with
+
+All optional. Masthead checks for each one and does without it.
+
+- **flarum/tags**: the section grid, tag chips and a tag as the story source.
+- **flarum/sticky**: sticky discussions as the story source.
+- **fof/upload**: its images are used as story pictures.
+- **fof/polls**: the opening post's poll can move to the sidebar.
+- **[fof/discussion-views](https://github.com/FriendsOfFlarum/discussion-views)**: view counts beside the reply counts, including counts brought over by the Importer.
+- **ernestdefoe/page-builder**: articles as the story source.
+- **ernestdefoe/header-nav**: when installed, it decides what the main navigation holds.
+- **ernestdefoe/backdrop**: an author's profile cover is the picture of last resort.
+- **ernestdefoe/picks**: the upcoming-games card.
+- **ernestdefoe/bespoke**, **fof/forum-widgets-core**: place *Top posters* in their zones. fof/forum-widgets-core's placed widgets also show on the portal.
+- **ernestdefoe/wardrobe**: offer Masthead as one of several themes members can choose.
+
+---
+
+## Light by design
+
+- **forum.js**: 32 KB (9.6 KB gzipped), the whole theme: portal and discussion page.
+- **Stylesheet**: about 22 KB (4.6 KB gzipped) added to the forum's CSS.
+- **The portal page** runs 14 database queries in total on a forum with 60+
+  extensions enabled, and the same with 7 tags or 32. Masthead's own share is five
+  for the featured stories. The top-posters list and the online count are
+  cached (10 minutes and 1 minute).
+- **The discussion page** adds one request per section (*More in*, kept for
+  five minutes) and nothing per post.
+- **Fonts** are served from your own forum, never from Google, and only the
+  latin subset loads unless a page needs more.
+- Tested with a **database table prefix** on MariaDB, PostgreSQL and
+  SQLite.
+
+---
+
+## Install
+
+```bash
+composer require ernestdefoe/masthead
+php flarum cache:clear
+```
+
+Enable **Masthead** in the admin panel. The portal becomes the home page unless
+you had already chosen a home page other than the discussion list.
+
+## Update
+
+```bash
+composer update ernestdefoe/masthead
+php flarum cache:clear
+```
+
+---
+
+## For developers
+
+Add a widget to the portal's sidebar and the discussion page's sidebar at once
+by extending the shared slot:
+
+```js
+import { extend } from 'flarum/common/extend';
+
+extend(flarum.reg.get('ernestdefoe-masthead', 'forum/components/WidgetSlot').prototype, 'items', function (items) {
+  items.add('myWidget', <MyWidget />, 30);
+});
+```
+
+## Translations
+
+Every word on screen is in `locale/en.yml`, ready for a language pack.
+
+## Licence
+
+MIT. The bundled fonts, Barlow Condensed and Figtree, are under the SIL Open
+Font License (`assets/fonts/`).
+
+☕ If you like the things I have built, consider [buying me a coffee](https://buymeacoffee.com/ernestdefoe).
