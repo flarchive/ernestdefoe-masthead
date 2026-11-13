@@ -1,0 +1,175 @@
+// ============================================================================
+// The post scrubber rail: core's PostStreamScrubber, at the right of the
+// posts on computers and tablets (phones keep it in the top bar).
+//
+// The rail is a sibling of the stream inside the page's content, so the two
+// are laid side by side here, the rail sticky as the posts scroll.
+// ============================================================================
+
+@media @tablet-up {
+  .DiscussionPage .Page-content:has(> .MastheadRail) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 132px;
+    column-gap: 20px;
+    align-items: start;
+
+    > * {
+      grid-column: 1;
+    }
+
+    > .MastheadRail {
+      grid-column: 2;
+      grid-row: 1 / span 20;
+      position: sticky;
+      // Below the pinned header when there is one (shell/header.less).
+      top: calc(var(--mh-pinned-h, 0px) + 24px);
+      align-self: start;
+    }
+  }
+
+  .MastheadRail .PostStreamScrubber {
+    margin: 4px 0 0;
+
+    .Dropdown-toggle {
+      display: none;
+    }
+
+    .Dropdown-menu {
+      display: block;
+      position: static;
+      padding: 0;
+      margin: 0;
+      border: 0;
+      box-shadow: none;
+      background: none;
+      min-width: 0;
+    }
+  }
+
+  .MastheadRail .Scrubber {
+    .Scrubber-first,
+    .Scrubber-last {
+      padding: 0;
+      height: auto;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--mh-ink);
+      background: none;
+      border: 0;
+
+      &:hover,
+      &:focus-visible {
+        color: var(--mh-accent);
+      }
+    }
+
+    .Scrubber-first {
+      margin-bottom: 10px;
+    }
+
+    .Scrubber-last {
+      margin-top: 10px;
+    }
+  }
+
+  // The track: a thin line, the part already read a shade darker, the
+  // visible stretch the accent bar.
+  .MastheadRail .Scrubber-scrollbar {
+    margin: 0 0 0 6px;
+    height: 420px; // core's JS still caps it to the window
+  }
+
+  .MastheadRail .Scrubber-before,
+  .MastheadRail .Scrubber-after {
+    border-left: 3px solid var(--mh-line);
+  }
+
+  .MastheadRail .Scrubber-before {
+    border-left-color: color-mix(in srgb, var(--mh-muted) 45%, var(--mh-line));
+  }
+
+  .MastheadRail .Scrubber-bar {
+    width: 7px;
+    margin-left: -2px;
+    border-radius: 4px;
+    background: var(--mh-accent);
+  }
+
+  // Core makes the label the scrollbar's full width AND offsets it to the
+  // right, which in a 132px rail runs off the page at tablet width.
+  .MastheadRail .Scrubber-info {
+    left: 16px;
+    right: 0;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  // The position in Masthead's headline face, unless ernestdefoe/ridge's
+  // big number is on: that is the admin's chosen look for this label.
+  html:not([data-ridge-big-number]) .MastheadRail .Scrubber-info strong {
+    font-family: var(--mh-heading);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--mh-ink);
+
+    span {
+      font: inherit;
+      color: inherit;
+    }
+  }
+
+  .MastheadRail .Scrubber-description {
+    font-size: 12px;
+    color: var(--mh-muted);
+  }
+
+  .MastheadRail .Scrubber-unread {
+    border-left: 3px dashed var(--mh-accent);
+    background: none;
+    padding-left: 16px;
+    color: var(--mh-accent);
+    font-size: 12px;
+    text-transform: none;
+    white-space: nowrap;
+  }
+
+  // fof/best-answer's answer, at its place on the track.
+  .MastheadRail-best {
+    position: absolute;
+    left: -6px;
+    // Above ernestdefoe/ridge's post-marks layer (2) and the handle (3), so
+    // the marker stays clickable with Ridge on.
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+    background: none;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .MastheadRail-bestDot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #1f7a4d;
+    border: 2px solid var(--mh-ground);
+    flex: 0 0 auto;
+  }
+
+  .MastheadRail-bestLabel {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1f7a4d;
+    white-space: nowrap;
+  }
+
+  .MastheadRail-best:hover .MastheadRail-bestLabel,
+  .MastheadRail-best:focus-visible .MastheadRail-bestLabel {
+    text-decoration: underline;
+  }
+}

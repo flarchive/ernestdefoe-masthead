@@ -1,0 +1,110 @@
+.MastheadPortal > .container {
+  padding-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.MastheadSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.MastheadSection-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.MastheadSection-more {
+  margin-left: auto;
+  font-weight: 600;
+  color: var(--mh-ink);
+
+  &:hover {
+    color: var(--mh-accent);
+  }
+}
+
+.MastheadColumns {
+  display: flex;
+  gap: var(--mh-gap);
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.MastheadSidebar {
+  flex: 1 1 300px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+// The white card every panel and widget is.
+//
+// 🚨 Never overflow: hidden. A card can hold a dropdown (the discussion
+// menu in About this discussion, an extension's widget), and clipping the
+// card clips the menu. Anything that paints into a corner rounds itself.
+.MastheadPanel,
+.MastheadWidget {
+  background: var(--mh-card);
+  border: 1px solid var(--mh-line);
+  border-radius: var(--mh-radius);
+}
+
+// -- Cards that open a story, with links of their own inside -----------------
+//
+// A link cannot hold another link, so the card is not one: its title link
+// stretches over it (::after), and the last replier's name is lifted above
+// that. The ::after is placed by the card, the nearest positioned box: keep
+// everything between the title and the card unpositioned.
+
+.MastheadCard {
+  position: relative;
+}
+
+// html:not(#mh-card): theme link colours (Bespoke's runs to 0,3,1) and core's
+// hover underline stay off the title, which takes the card's colour.
+html:not(#mh-card) .MastheadCard-link {
+  color: inherit;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.MastheadCard:has(.MastheadCard-link:focus-visible) {
+  outline: 2px solid var(--mh-accent);
+  outline-offset: 2px;
+}
+
+html:not(#mh-card) .MastheadLastReply-user {
+  position: relative;
+  z-index: 2;
+  color: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: 2px;
+
+  &:hover,
+  &:focus-visible {
+    color: inherit;
+    text-decoration-color: currentColor;
+  }
+}
